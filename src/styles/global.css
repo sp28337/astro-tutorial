@@ -13,4 +13,7 @@
   h1 {
     @apply my-4 text-4xl;
   }
+  a {
+    @apply text-blue-700 hover:underline;
+  }
 }
