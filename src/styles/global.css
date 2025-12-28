@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
 
+:has(.menu[aria-expanded="true"]) .nav-links {
+  display: block;
+}
+
+
 @layer base {
   html {
     @apply bg-slate-100 font-sans;
