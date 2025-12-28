@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
 
 :has(.menu[aria-expanded="true"]) .nav-links {
   display: block;
 }
 
-
 @layer base {
   html {
     @apply bg-slate-100 font-sans;
+    
+    &.dark {
+      @apply bg-[#0d0950] text-white;
+    }
   }
 
   body {
@@ -18,18 +22,37 @@
   h1 {
     @apply my-4 text-4xl;
   }
+
   a {
     @apply text-blue-700 hover:underline;
+    
+    .dark & {
+      @apply text-[#ff9776];
+    }
   }
 }
 
-
 @layer components {
   .nav-link {
-    @apply block md:inline-block w-full 
-    md:w-auto py-2.5 md:py-3.75 px-5 text-center 
-    font-bold uppercase text-lg text-purple-900 
-    no-underline hover:bg-purple-300  
-    focus:bg-purple-300 transition;
+    @apply block md:inline-block w-full md:w-auto py-2.5 md:py-3.75 px-5 
+           text-center font-bold uppercase text-lg text-purple-900 
+           no-underline hover:bg-purple-300 focus:bg-purple-300 transition;
+  }
+
+  .menu {
+    .dark & {
+      @apply bg-white text-black;
+    }
+  }
+
+  .nav-links a {
+    .dark & {
+      @apply text-white;
+
+      &:hover,
+      &:focus {
+        @apply text-[#0d0950];
+      }
+    }
   }
 }
